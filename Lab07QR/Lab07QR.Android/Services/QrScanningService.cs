@@ -12,8 +12,9 @@ using System.Threading.Tasks;
 using ZXing.Mobile;
 using Lab07QR.Services;
 using Lab07QR.Droid.Service;
+using Lab07QR.Droid;
 
-[assembly: Xamarin.Forms.Dependency(typeof(Lab07QR.Droid.Service.QrScanningService))]
+[assembly: Xamarin.Forms.Dependency(typeof(QrScanningService))]
 
 namespace Lab07QR.Droid.Service
 {
@@ -21,6 +22,8 @@ namespace Lab07QR.Droid.Service
     {
         public async Task<string> ScanAsync()
         {
+            MobileBarcodeScanner.Initialize(MainActivity.Instance.Application);
+
             var optionsDefault = new MobileBarcodeScanningOptions();
             var optionsCustom = new MobileBarcodeScanningOptions();
 
@@ -35,3 +38,5 @@ namespace Lab07QR.Droid.Service
         }
     }
 }
+
+

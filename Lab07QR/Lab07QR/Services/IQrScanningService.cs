@@ -8,5 +8,6 @@ namespace Lab07QR.Services
     public interface IQrScanningService
     {
         Task<string> ScanAsync();
+
     }
 }
